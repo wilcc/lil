@@ -204,6 +204,7 @@ describe('Lil.removeAt', () => {
     // 5, 500, 301, 500, 50, 501, 12, yo, what's up, you are cool, we should be friends
 
     lil.removeAt(1);
+
     lil.removeAt(3);
     lil.removeAt(5);
     lil.removeAt(6);
