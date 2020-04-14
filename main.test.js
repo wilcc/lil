@@ -3,12 +3,6 @@ const {
   Node,
 } = require('./main.js')
 
-let lil;
-
-beforeEach(() => {
-  lil = Lil()
-})
-
 describe('Node', () => {
   it(`returns an object`, () => {
     const node = Node()
@@ -34,52 +28,33 @@ describe('Node.next', () => {
 
 describe('Lil', () => {
   it(`returns an object`, () => {
+    const lil = Lil();
     expect(typeof lil).toBe('object')
   })
 })
 
 describe('Lil.head', () => {
   it(`begins as a null value`, () => {
+    const lil = Lil();
     expect(lil.head).toBe(null);
   })
 })
 
-// VERY useful for debugging! Once your done, you can console log the return value in any of the following tests to see what you've got in your list.
-describe('Lil.values', () => {
-  it(`returns every value in the list as an array`, () => {
-    const node3 = {
-      value: 3,
-      next: null,
-    }
-
-    const node2 = {
-      value: 5,
-      next: node3,
-    }
-
-    const node1 = {
-      value: 15,
-      next: node2,
-    }
-
-    lil.head = node1;
-
-    expect(lil.values()).toEqual([15, 5, 3]);
-  })
-});
-
 describe('Lil.addToStart', () => {
   it(`if there's no head, adds a new Node as that head`, () => {
+    const lil = Lil();
     lil.addToStart()
     expect(lil.head).not.toBeNull()
   });
 
   it(`if there's no head, adds a new Node as that head with the given value`, () => {
+    const lil = Lil();
     lil.addToStart('some value')
     expect(lil.head.value).toBe('some value')
   })
 
   it(`if there is a head, adds a new Node with the given value as the new head and makes the new Node's next property the old head`, () => {
+    const lil = Lil();
     lil.addToStart('a first value');
     lil.addToStart('a second value');
     lil.addToStart('a third value');
@@ -92,16 +67,19 @@ describe('Lil.addToStart', () => {
 
 describe('Lil.addToEnd', () => {
   it(`if there's no head, adds a new Node as that head`, () => {
+    const lil = Lil();
     lil.addToEnd();
     expect(lil.head).not.toBeNull()
   })
 
   it(`if there's no head, gives the Node added the given value`, () => {
+    const lil = Lil();
     lil.addToEnd(3);
     expect(lil.head.value).toBe(3)
   })
   
   it(`if there is a head and it's the only node, adds the new node as the head's next`, () => {
+    const lil = Lil();
     lil.addToEnd(3);
     expect(lil.head.value).toBe(3)
     lil.addToEnd(150);
@@ -109,6 +87,7 @@ describe('Lil.addToEnd', () => {
   })
   
   it(`if there is a head and other nodes, adds the new node as the last item's next`, () => {
+    const lil = Lil();
     lil.addToEnd(3);
     expect(lil.head.value).toBe(3)
     lil.addToEnd(150);
@@ -120,6 +99,7 @@ describe('Lil.addToEnd', () => {
 
 describe('Lil.removeFromStart', () => {
   it(`removes the old head`, () => {
+    const lil = Lil();
     lil.addToStart('hello')
     lil.addToStart('hi')
     lil.addToStart('how are you')
@@ -128,6 +108,7 @@ describe('Lil.removeFromStart', () => {
   })
 
   it(`sets the head as the previously-second node`, () => {
+    const lil = Lil();
     lil.addToEnd('yo')
     lil.addToEnd(`what's up`)
     lil.addToEnd('you are cool')
@@ -137,6 +118,7 @@ describe('Lil.removeFromStart', () => {
   })
 
   it(`maintains the order after that`, () => {
+    const lil = Lil();
     lil.addToEnd(500)
     lil.addToEnd(50)
     lil.addToEnd(501);
@@ -147,6 +129,7 @@ describe('Lil.removeFromStart', () => {
   })
 
   it(`returns the removed value`, () => {
+    const lil = Lil();
     lil.addToEnd(3);
     lil.addToEnd(15);
     lil.addToEnd(6);
@@ -157,6 +140,7 @@ describe('Lil.removeFromStart', () => {
 
 describe('Lil.removeFromEnd', () => {
   it(`removes the last item from the list`, () => {
+    const lil = Lil();
     lil.addToEnd(500);
     lil.addToEnd(50);
     lil.addToEnd(501);
@@ -170,6 +154,7 @@ describe('Lil.removeFromEnd', () => {
   })
 
   it(`returns the removed value`, () => {
+    const lil = Lil();
     lil.addToEnd(3);
     lil.addToEnd(15);
     lil.addToEnd(6);
@@ -180,10 +165,12 @@ describe('Lil.removeFromEnd', () => {
 
 describe('Lil.getAt', () => {
   it(`if there's no head, returns null`, () => {
+    const lil = Lil();
     expect(lil.getAt(0)).toBe(null)
   })
 
   it(`given a 0-based index, will return the value at that node`, () => {
+    const lil = Lil();
     lil.addToEnd(5)
     lil.addToEnd(500)
     lil.addToEnd(301)
@@ -196,10 +183,12 @@ describe('Lil.getAt', () => {
 
 describe('Lil.removeAt', () => {
   it(`if there's no head, returns null`, () => {
+    const lil = Lil();
     expect(lil.removeAt(0)).toBe(null)
   })
 
   it(`given a 0-based index, will remove the node at that index`, () => {
+    const lil = Lil();
     lil.addToEnd(5)
     lil.addToEnd(500)
     lil.addToEnd(301)
@@ -228,6 +217,7 @@ describe('Lil.removeAt', () => {
   })
 
   it(`returns the removed value`, () => {
+    const lil = Lil();
     lil.addToEnd(3);
     lil.addToEnd(15);
     lil.addToEnd(6);
